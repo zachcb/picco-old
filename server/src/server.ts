@@ -15,10 +15,4 @@ database.connect().then(async connection => {
   console.error(error);
 });
 
-// const server = app.listen(config.PORT, () => {
-//   console.log(`Server running on port ${config.PORT}`);
-//   console.log("--> Press CTRL-C to stop\n");
-// });
-
-// export const database;
 export default app;
