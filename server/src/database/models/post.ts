@@ -1,39 +1,41 @@
-import { Entity, Column, PrimaryGeneratedColumn } from "typeorm";
-import Moment from "moment-timezone";
+import { ObjectType, Field, ID } from "type-graphql";
+import {
+  PrimaryGeneratedColumn,
+  Column,
+  ManyToOne,
+  Entity,
+  CreateDateColumn
+} from "typeorm";
+import { MaxLength } from "class-validator";
 
-import { Modelize as ModelizeInterface } from "../../bin/types/interfaces/Modelize";
-
+import { UserModel } from "./user";
 
 @Entity()
-export class PostModel {
-  constructor(payload: object) {
-    Object.assign(this, payload);
-  }
-
+@ObjectType()
+class PostModel {
   @PrimaryGeneratedColumn()
-  public id: number;
+  readonly id: string;
 
-  @Column({
-    length: 120,
-    unique: true,
-  })
+  @Field()
+  @Column({ unique: true })
+  @MaxLength(120)
   public name: string;
 
-  @Column({
-    type: Date,
-    default: Moment( new Date() ).format('YYYY-MM-DD HH:ss')
-  })
+  @Field(type => UserModel)
+  @ManyToOne(type => UserModel, { lazy: true })
+  user: UserModel;
+
+  @Field()
+  @CreateDateColumn()
   public createdAt?: Date;
 
-  @Column({
-    type: Date,
-    default: null
-  })
+  @Field()
+  @CreateDateColumn()
   public updatedAt?: Date;
 
-  @Column({
-    type: Date,
-    default: null,
-  })
+  @Field()
+  @CreateDateColumn()
   public deletedAt?: Date;
 }
+
+export { PostModel };

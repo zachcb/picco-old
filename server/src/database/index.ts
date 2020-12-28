@@ -1,3 +1,10 @@
+/*
+ * Database Connection Handler
+ *
+ * Takes in database models to create TypeORM entities.
+ *
+ *
+*/
 import { Container, Service } from "typedi";
 import {
   Connection,
@@ -23,19 +30,21 @@ export class Database implements DatabaseInterface {
     useContainer(Container);
 
     this.connection = await createConnection(
-    //   {
-    //   name: config.PG_NAME,
-    //   type: "postgres",
-    //   host: config.PG_HOST,
-    //   database: config.PG_DATABASE,
-    //   port: config.PG_PORT,
-    //   username: config.PG_USER,
-    //   password: config.PG_PASSWORD,
-    //   ssl: config.PRODUCTION,
-    //   synchronize: true,
-    //   logging: !config.PRODUCTION,
-    //   entities: ['database/models/*.{js,ts}'],
-    // }
+      {
+        type: "postgres",
+        name: config.PG_NAME,
+        host: config.PG_HOST,
+        database: config.PG_DATABASE,
+        port: config.PG_PORT,
+        username: config.PG_USER,
+        password: config.PG_PASSWORD,
+        ssl: config.PRODUCTION,
+        synchronize: true,
+        logging: !config.PRODUCTION,
+        entities: ['database/models/*.{js,ts}'],
+        dropSchema: true,
+        cache: true,
+      }
     );
 
     return this.connection;

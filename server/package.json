@@ -26,7 +26,9 @@
   "dependencies": {
     "@koa/cors": "^3.1.0",
     "@types/moment-timezone": "^0.5.30",
+    "apollo-server-koa": "^2.19.1",
     "boom": "^7.3.0",
+    "graphql": "^15.4.0",
     "koa": "^2.13.0",
     "koa-body": "^4.2.0",
     "koa-bodyparser": "^4.3.0",
@@ -44,6 +46,7 @@
     "routing-controllers": "^0.9.0-alpha.6",
     "swagger2": "^2.0.0",
     "swagger2-koa": "^2.0.0",
+    "type-graphql": "^1.1.1",
     "typedi": "^0.8.0",
     "typeorm": "^0.2.29",
     "typeorm-typedi-extensions": "^0.2.3"

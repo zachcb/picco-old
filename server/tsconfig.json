@@ -5,7 +5,7 @@
     "emitDecoratorMetadata": true,
     "experimentalDecorators": true,
     "allowSyntheticDefaultImports": true,
-    "target": "es6",
+    "target": "esnext",
     "noImplicitAny": true,
     "moduleResolution": "node",
     "sourceMap": true,
@@ -13,7 +13,7 @@
     "sourceRoot": "src",
     "outDir": "dist",
     "baseUrl": ".",
-    "lib": ["esnext", "dom"],
+    "lib": ["esnext", "esnext.asynciterable", "dom"],
     "types": ["node"],
     "paths": {
       "*": [
